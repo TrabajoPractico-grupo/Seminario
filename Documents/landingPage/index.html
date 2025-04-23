@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BoletoEstudiantil</title>
+  <style>
+   :root {
+      --primary: #1a73e8;
+      --primary-dark: #0d47a1;
+      --primary-light: #e8f0fe;
+      --accent: #34a853;
+      --text: #202124;
+      --text-light: #5f6368;
+      --white: #ffffff;
+      --gray-light: #f8f9fa;
+      --shadow: 0 2px 10px rgba(0,0,0,0.1);
+      --lila: #6c63ff;
+      --lila-dark: #07060f;
+      --lila-light: #e8e6ff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Google Sans', 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--gray-light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: var(--primary);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+    
+    header h1 img {
+      height: 36px;
+      margin-right: 10px;
+    }
+    
+    nav {
+      display: flex;
+    }
+    
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 500;
+      transition: all 0.3s;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    
+    nav a:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+    
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/600') center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      margin: 10px;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      background-color: rgba(255,255,255,0.9);
+      color: var(--primary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-align: center;
+      color: var(--primary-dark);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary);
+    }
+    
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    
+    .card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+      width: 100%;
+      max-width: 340px;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+    
+    .card-content {
+      padding: 25px;
+    }
+    
+    .card-title {
+      font-size: 20px;
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+    }
+    
+    .list-styled {
+      list-style-position: inside;
+      margin-left: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .list-styled li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 10px;
+    }
+    
+    .steps {
+      counter-reset: step-counter;
+      list-style-type: none;
+    }
+    
+    .steps li {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 20px;
+    }
+    
+    .steps li::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--primary);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: var(--white);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--primary-dark);
+    }
+    
+    .faq-question::after {
+      content: "➕";
+      font-size: 14px;
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s;
+      background-color: var(--primary-light);
+    }
+    
+    .contacto {
+      text-align: center;
+    }
+    
+    .contact-methods {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .contact-method {
+      padding: 20px;
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      width: 250px;
+      transition: transform 0.3s;
+    }
+    
+    .contact-method:hover {
+      transform: translateY(-5px);
+    }
+    
+    .contact-icon {
+      font-size: 36px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .contacto a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .contacto a:hover {
+      text-decoration: underline;
+    }
+    
+    footer {
+      background-color: var(--primary-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 16px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .social-media {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    
+    .social-icon:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    /* Nuevos estilos para las tarjetas de oficinas */
+    .oficina-card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    
+    .oficina-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+      width: 100%;
+      max-width: 250px;
+      border: 1px solid var(--lila-light);
+    }
+    
+    .oficina-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .oficina-card-header {
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--white);
+    }
+    
+    .oficina-card-content {
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .oficina-card-number {
+      font-size: 56px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    
+    .oficina-card-text {
+      font-size: 16px;
+      color: var(--text-black);
+    }
+    .oficina-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--lila-light);
+    }
+
+    @media (max-width: 768px) {
+      .oficina-card img {
+        height: 150px;
+      
+    }
+}
+
+    /* Tonalidades de lila para las tarjetas de oficinas */
+    .oficina-card:nth-child(1) .oficina-card-header { background-color: #1f1e1e; }
+    .oficina-card:nth-child(1) .oficina-card-number { color: #9b8aff; }
+    
+    .oficina-card:nth-child(2) .oficina-card-header { background-color: #1f1e1e; }
+    .oficina-card:nth-child(2) .oficina-card-number { color: #6c63ff; }
+    
+    .oficina-card:nth-child(3) .oficina-card-header { background-color: #1f1e1e; }
+    .oficina-card:nth-child(3) .oficina-card-number { color: #8573ff; }
+    
+    .oficina-card:nth-child(4) .oficina-card-header { background-color: #1f1e1e; }
+    .oficina-card:nth-child(4) .oficina-card-number { color: #7c68ff; }
+    
+    .oficina-card:nth-child(5) .oficina-card-header { background-color: #917dff; }
+    .oficina-card:nth-child(5) .oficina-card-number { color: #917dff; }
+    
+    .oficina-card:nth-child(6) .oficina-card-header { background-color: #a594ff; }
+    .oficina-card:nth-child(6) .oficina-card-number { color: #a594ff; }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 18px;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .hero h2 {
+        font-size: 32px;
+      }
+      
+      .hero p {
+        font-size: 18px;
+      }
+      
+      section {
+        padding: 60px 20px;
+      }
+      
+      .footer-content {
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .oficina-card {
+        max-width: 100%;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1> Gobierno de la Ciudad de Buenos Aires</h1>
+      <nav>
+        <a href="#requisitos">Requisitos</a>
+        <a href="#solicitud">Cómo solicitarlo</a>
+        <a href="#oficinas">Oficinas</a>
+        <a href="#faq">Preguntas Frecuentes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="requisitos">
+    <h3 class="section-title">¿Quiénes pueden acceder?</h3>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-img">
+          <img src="/api/placeholder/340/200" alt="Estudiantes de primaria"/>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">Estudiantes de nivel primario</h4>
+          <p>Alumnos matriculados en escuelas públicas primarias ubicadas en la Ciudad de Buenos Aires.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">
+          <img src="/api/placeholder/340/200" alt="Estudiantes de secundaria"/>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">Estudiantes de nivel secundario</h4>
+          <p>Alumnos matriculados en escuelas públicas secundarias ubicadas en la Ciudad de Buenos Aires.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">
+          <img src="/api/placeholder/340/200" alt="Residentes de CABA"/>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">Requisitos adicionales</h4>
+          <ul class="list-styled">
+            <li>Ser residente en la Ciudad Autónoma de Buenos Aires</li>
+            <li>Asistir a instituciones de gestión estatal</li>
+            <li>Contar con tarjeta SUBE personal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solicitud" style="background-color: var(--primary-light);">
+    <h3 class="section-title">¿Cómo solicitar el boleto estudiantil?</h3>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <ol class="steps">
+        <li>
+          <h4>Completá el formulario online</h4>
+          <p>Ingresá a <a href="https://www.buenosaires.gob.ar/tramites/solicitud-del-boleto-estudiantil" target="_blank">buenosaires.gob.ar/tramites</a> y completá todos los datos requeridos para iniciar tu solicitud.</p>
+        </li>
+        <li>
+          <h4>Elegí una oficina para validar tu identidad</h4>
+          <p>Seleccioná la oficina más conveniente para presentar tu documentación. Recordá llevar DNI y constancia de alumno regular.</p>
+        </li>
+        <li>
+          <h4>Activá el beneficio en tu tarjeta SUBE</h4>
+          <p>Una vez aprobada tu solicitud, acercate a una terminal automática SUBE para activar el beneficio en tu tarjeta.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Nueva sección de oficinas con tarjetas en tonos lila -->
+  <section id="oficinas">
+    <h3 class="section-title">Cantidad de oficinas por comuna</h3>
+    <div class="oficina-card-container">
+      <div class="oficina-card">
+        <div class="oficina-card-header">Comuna 1</div>
+        <img src="img/comuna1.png" alt="Descripción de la imagen">
+        <div class="oficina-card-content">
+          <div class="oficina-card-number">16</div>
+          <p class="oficina-card-text">oficina disponible</p>
+        </div>
+      </div>
+
+      <div class="oficina-card">
+        <div class="oficina-card-header">Comuna 4</div>
+        <img src="img/comuna4.png" alt="Descripción de la imagen">
+        <div class="oficina-card-content">
+          <div class="oficina-card-number">16</div>
+          <p class="oficina-card-text">oficinas disponibles</p>
+        </div>
+      </div>
+
+      <div class="oficina-card">
+        <div class="oficina-card-header">Comuna 5</div>
+        <img src="img/comuna5.png" alt="Descripción de la imagen">
+        <div class="oficina-card-content">
+          <div class="oficina-card-number">1</div>
+          <p class="oficina-card-text">oficina disponible</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="faq" style="background-color: var(--primary-light);">
+    <h3 class="section-title">Preguntas Frecuentes</h3>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">¿Qué hago si pierdo la tarjeta SUBE?</div>
+        <div class="faq-answer">
+          <p>Si perdiste tu tarjeta SUBE, deberás tramitar una nueva y luego transferir el beneficio del Boleto Estudiantil a la nueva tarjeta. Para ello, acercate a cualquier oficina de atención con tu DNI y la nueva tarjeta SUBE.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">¿Puedo usar el Boleto Estudiantil los fines de semana?</div>
+        <div class="faq-answer">
+          <p>Sí, el Boleto Estudiantil se puede utilizar todos los días de la semana, incluyendo fines de semana y feriados, durante todo el ciclo lectivo.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">¿Cómo actualizo mis datos personales?</div>
+        <div class="faq-answer">
+          <p>Para actualizar tus datos, ingresá a tu cuenta en el sitio oficial y seleccioná la opción "Actualizar información". Si cambiaste de escuela, es necesario presentar una nueva constancia de alumno regular en una oficina de atención.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">¿Cuántos viajes gratuitos tengo por mes?</div>
+        <div class="faq-answer">
+          <p>El Boleto Estudiantil te otorga 50 viajes gratuitos por mes en colectivos y subtes dentro de la Ciudad de Buenos Aires. Los viajes no utilizados no se acumulan para el mes siguiente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <h3 class="section-title">Contacto</h3>
+    <p>Si tenés alguna duda o consulta, podés comunicarte con nosotros a través de los siguientes canales:</p>
+    
+    <div class="contact-methods">
+      <div class="contact-method">
+        <div class="contact-icon">✉️</div>
+        <h4>Email</h4>
+        <p><a href="mailto:boletoestudiantil@buenosaires.gob.ar">boletoestudiantil@buenosaires.gob.ar</a></p>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon">📞</div>
+        <h4>Teléfono</h4>
+        <p><a href="tel:147">147</a> (Lun a Vie: 8 a 20hs)</p>
+      </div>
+      
+      <div class="contact-method">
+        <div class="contact-icon">🏢</div>
+        <h4>Atención presencial</h4>
+        <p>Sedes comunales<br>Lun a Vie: 9 a 17hs</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="/api/placeholder/40/40" alt="Logo GCABA"/>
+        <p>Gobierno de la Ciudad de Buenos Aires</p>
+      </div>
+      
+      <div class="social-media">
+        <a href="#" class="social-icon">📘</a>
+        <a href="#" class="social-icon">📱</a>
+        <a href="#" class="social-icon">📷</a>
+        <a href="#" class="social-icon">🎬</a>
+      </div>
+      
+      <p>&copy; 2025 - Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script>
+    // Script para las preguntas frecuentes
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+          question.style.fontWeight = '500';
+          question.textContent = question.textContent.replace('➖', '➕');
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          question.style.fontWeight = '700';
+          question.textContent = question.textContent.replace('➕', '➖');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
