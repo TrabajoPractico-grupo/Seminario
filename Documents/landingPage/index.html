@@ -390,15 +390,15 @@
     }
     
     .oficina-card {
-      background: var(--white);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s;
-      width: 100%;
-      max-width: 250px;
-      border: 1px solid var(--lila-light);
-    }
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+  width: 200%;
+  max-width: 400px;
+  border: 1px solid var(--lila-light);
+}
     
     .oficina-card:hover {
       transform: translateY(-5px);
@@ -428,15 +428,15 @@
       color: var(--text-black);
     }
     .oficina-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-bottom: 1px solid var(--lila-light);
-    }
+  width: 100%;
+  height: 200px; /* más alto para que se vea más grande */
+  object-fit: cover;
+  border-bottom: 1px solid var(--lila-light);
+}
 
-    @media (max-width: 768px) {
-      .oficina-card img {
-        height: 150px;
+@media (max-width: 768px) {
+  .oficina-card img {
+    height: 180px; 
       
     }
 }
@@ -497,46 +497,40 @@
 
   <header>
     <div class="header-container">
-      <h1> Gobierno de la Ciudad de Buenos Aires</h1>
+      <h1> Boleto Estudiantil</h1>
       <nav>
         <a href="#requisitos">Requisitos</a>
-        <a href="#solicitud">Cómo solicitarlo</a>
-        <a href="#oficinas">Oficinas</a>
-        <a href="#faq">Preguntas Frecuentes</a>
+        <a href="#solicitud">Donde Solicitarlo</a>
+        <a href="#oficina">oficinas</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
   <section id="requisitos">
-    <h3 class="section-title">¿Quiénes pueden acceder?</h3>
+    <h3 class="section-title">Descripción del dataset </h3>
+    <h1>Buenos Aires Data presenta un dataset sobre el boleto Estudiantil y las distintas estaciones de la ciudad.</h1>
+    <br>
+    <h2 style="color: #0d47a1;">Quienes pueden acceder? </h2>
+    <br>
     <div class="card-container">
       <div class="card">
-        <div class="card-img">
-          <img src="/api/placeholder/340/200" alt="Estudiantes de primaria"/>
-        </div>
+      
         <div class="card-content">
           <h4 class="card-title">Estudiantes de nivel primario</h4>
           <p>Alumnos matriculados en escuelas públicas primarias ubicadas en la Ciudad de Buenos Aires.</p>
         </div>
       </div>
       <div class="card">
-        <div class="card-img">
-          <img src="/api/placeholder/340/200" alt="Estudiantes de secundaria"/>
-        </div>
         <div class="card-content">
           <h4 class="card-title">Estudiantes de nivel secundario</h4>
           <p>Alumnos matriculados en escuelas públicas secundarias ubicadas en la Ciudad de Buenos Aires.</p>
         </div>
       </div>
       <div class="card">
-        <div class="card-img">
-          <img src="/api/placeholder/340/200" alt="Residentes de CABA"/>
-        </div>
         <div class="card-content">
           <h4 class="card-title">Requisitos adicionales</h4>
           <ul class="list-styled">
-            <li>Ser residente en la Ciudad Autónoma de Buenos Aires</li>
             <li>Asistir a instituciones de gestión estatal</li>
             <li>Contar con tarjeta SUBE personal</li>
           </ul>
@@ -544,6 +538,65 @@
       </div>
     </div>
   </section>
+  <!-- Nueva sección de oficinas con tarjetas en tonos lila -->
+  <section id="solicitud">
+    <h3 class="section-title">Donde Solicitarlo?</h3>
+    <h1>Podemos solicitarlo a travez de comunas, barrios o por su zona geografica </h1>
+    <div class="oficina-card-container">
+      <div class="oficina-card">
+        <div class="oficina-card-header">Comuna</div>
+        <br>
+        <img src="img/comuna1.png"style="width: 360px; height: 250px;" alt="Descripción de la imagen">
+        <div class="oficina-card-content">
+          <div class="oficina-card-number">16</div>
+          <p class="oficina-card-text">oficina disponible</p>
+        </div>
+      </div>
+
+      <div class="oficina-card">
+        <div class="oficina-card-header">Barrio</div>
+        <br>
+        <img src="img/barrio.png" style="height: 268px;" alt="Descripción de la imagen">
+        <div class="oficina-card-content">
+          <div class="oficina-card-number">10</div>
+          <p class="oficina-card-text">oficinas disponibles</p>
+        </div>
+      </div>
+      <div>
+        <br>
+      <h3 class="section-title">Cantidad de oficinas por hora de apertura</h3>
+      <h1>hace referencia a cuántas oficinas abren en un horario determinado . Es decir, es una forma de agrupar y contar oficinas según la hora en que comienzan a atender al público . </h1>
+      <div class="oficina-card-container">
+        <div class="oficina-card">
+          <div class="oficina-card-header">Hora</div>
+          <br>
+          <img src="img/hora.png"style="width: 400px; height: 260px;" alt="Descripción de la imagen">
+          <div class="oficina-card-content">
+            <div class="oficina-card-number">14</div>
+            <p class="oficina-card-text">oficina disponible</p>
+          </div>
+        </div>
+      
+
+
+      
+  </section>
+  <section id="oficina">
+
+  <h1 style="text-align: center;">Mapa centrado de oficinas en CABA</h1>
+<div style="display: flex; justify-content: center; margin: 40px 0;">
+  <iframe
+    src="mapa.html"
+    width="80%" 
+    height="400px" 
+    style="border:0; border-radius: 10px;"
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+  </section> 
+
 
   <section id="solicitud" style="background-color: var(--primary-light);">
     <h3 class="section-title">¿Cómo solicitar el boleto estudiantil?</h3>
@@ -565,68 +618,9 @@
     </div>
   </section>
 
-  <!-- Nueva sección de oficinas con tarjetas en tonos lila -->
-  <section id="oficinas">
-    <h3 class="section-title">Cantidad de oficinas por comuna</h3>
-    <div class="oficina-card-container">
-      <div class="oficina-card">
-        <div class="oficina-card-header">Comuna 1</div>
-        <img src="img/comuna1.png" alt="Descripción de la imagen">
-        <div class="oficina-card-content">
-          <div class="oficina-card-number">16</div>
-          <p class="oficina-card-text">oficina disponible</p>
-        </div>
-      </div>
-
-      <div class="oficina-card">
-        <div class="oficina-card-header">Comuna 4</div>
-        <img src="img/comuna4.png" alt="Descripción de la imagen">
-        <div class="oficina-card-content">
-          <div class="oficina-card-number">16</div>
-          <p class="oficina-card-text">oficinas disponibles</p>
-        </div>
-      </div>
-
-      <div class="oficina-card">
-        <div class="oficina-card-header">Comuna 5</div>
-        <img src="img/comuna5.png" alt="Descripción de la imagen">
-        <div class="oficina-card-content">
-          <div class="oficina-card-number">1</div>
-          <p class="oficina-card-text">oficina disponible</p>
-        </div>
-      </div>
-    </div>
-  </section>
   
-  <section id="faq" style="background-color: var(--primary-light);">
-    <h3 class="section-title">Preguntas Frecuentes</h3>
-    <div class="faq-container">
-      <div class="faq-item">
-        <div class="faq-question">¿Qué hago si pierdo la tarjeta SUBE?</div>
-        <div class="faq-answer">
-          <p>Si perdiste tu tarjeta SUBE, deberás tramitar una nueva y luego transferir el beneficio del Boleto Estudiantil a la nueva tarjeta. Para ello, acercate a cualquier oficina de atención con tu DNI y la nueva tarjeta SUBE.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">¿Puedo usar el Boleto Estudiantil los fines de semana?</div>
-        <div class="faq-answer">
-          <p>Sí, el Boleto Estudiantil se puede utilizar todos los días de la semana, incluyendo fines de semana y feriados, durante todo el ciclo lectivo.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">¿Cómo actualizo mis datos personales?</div>
-        <div class="faq-answer">
-          <p>Para actualizar tus datos, ingresá a tu cuenta en el sitio oficial y seleccioná la opción "Actualizar información". Si cambiaste de escuela, es necesario presentar una nueva constancia de alumno regular en una oficina de atención.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">¿Cuántos viajes gratuitos tengo por mes?</div>
-        <div class="faq-answer">
-          <p>El Boleto Estudiantil te otorga 50 viajes gratuitos por mes en colectivos y subtes dentro de la Ciudad de Buenos Aires. Los viajes no utilizados no se acumulan para el mes siguiente.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  
+
 
   <section id="contacto" class="contacto">
     <h3 class="section-title">Contacto</h3>
@@ -656,38 +650,16 @@
   <footer>
     <div class="footer-content">
       <div class="footer-logo">
-        <img src="/api/placeholder/40/40" alt="Logo GCABA"/>
         <p>Gobierno de la Ciudad de Buenos Aires</p>
       </div>
       
-      <div class="social-media">
-        <a href="#" class="social-icon">📘</a>
-        <a href="#" class="social-icon">📱</a>
-        <a href="#" class="social-icon">📷</a>
-        <a href="#" class="social-icon">🎬</a>
-      </div>
+     
       
       <p>&copy; 2025 - Todos los derechos reservados</p>
     </div>
   </footer>
 
-  <script>
-    // Script para las preguntas frecuentes
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        if (answer.style.maxHeight) {
-          answer.style.maxHeight = null;
-          question.style.fontWeight = '500';
-          question.textContent = question.textContent.replace('➖', '➕');
-        } else {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          question.style.fontWeight = '700';
-          question.textContent = question.textContent.replace('➕', '➖');
-        }
-      });
-    });
-  </script>
+  
 
 </body>
 </html>
