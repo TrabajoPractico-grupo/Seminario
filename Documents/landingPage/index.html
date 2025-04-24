@@ -347,7 +347,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 200px;
     }
     
     .footer-logo {
@@ -494,54 +494,32 @@
   </style>
 </head>
 <body>
-
   <header>
     <div class="header-container">
       <h1> Boleto Estudiantil</h1>
       <nav>
-        <a href="#requisitos">Requisitos</a>
-        <a href="#solicitud">Donde Solicitarlo</a>
-        <a href="#oficina">oficinas</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#requisitos">Descripcion</a>
+        <a href="#solicitud">Cantidad de Oficinas</a>
+        <a href="#horario">Horario</a>
+        <a href="#oficina">Donde Solicitarlo</a>
       </nav>
     </div>
   </header>
 
   <section id="requisitos">
     <h3 class="section-title">Descripción del dataset </h3>
-    <h1>Buenos Aires Data presenta un dataset sobre el boleto Estudiantil y las distintas estaciones de la ciudad.</h1>
+    <h1>Buenos Aires Data presenta un dataset sobre el boleto Estudiantil y su relación con las distintas estaciones de transporte público en la Ciudad de Buenos Aires.     </h1>
+
+        <h1>En la siguiente imagen se puede apreciar la muestra de la distribución de oficinas por empresa en el sector de transporte</h1>
     <br>
-    <h2 style="color: #0d47a1;">Quienes pueden acceder? </h2>
-    <br>
-    <div class="card-container">
-      <div class="card">
-      
-        <div class="card-content">
-          <h4 class="card-title">Estudiantes de nivel primario</h4>
-          <p>Alumnos matriculados en escuelas públicas primarias ubicadas en la Ciudad de Buenos Aires.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-content">
-          <h4 class="card-title">Estudiantes de nivel secundario</h4>
-          <p>Alumnos matriculados en escuelas públicas secundarias ubicadas en la Ciudad de Buenos Aires.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-content">
-          <h4 class="card-title">Requisitos adicionales</h4>
-          <ul class="list-styled">
-            <li>Asistir a instituciones de gestión estatal</li>
-            <li>Contar con tarjeta SUBE personal</li>
-          </ul>
-        </div>
-      </div>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <img style="height: 400px;" src="img/empresas.png" alt="Descripción de la imagen">
     </div>
-  </section>
+    
   <!-- Nueva sección de oficinas con tarjetas en tonos lila -->
   <section id="solicitud">
-    <h3 class="section-title">Donde Solicitarlo?</h3>
-    <h1>Podemos solicitarlo a travez de comunas, barrios o por su zona geografica </h1>
+    <h3 class="section-title">Cantidad de Oficinas</h3>
+    <h1>Este grafico representa las cantidad de oficinas que hay por comuna y barrio </h1>
     <div class="oficina-card-container">
       <div class="oficina-card">
         <div class="oficina-card-header">Comuna</div>
@@ -562,6 +540,12 @@
           <p class="oficina-card-text">oficinas disponibles</p>
         </div>
       </div>
+    </div>
+
+    </section>
+
+      <section id="horario">
+
       <div>
         <br>
       <h3 class="section-title">Cantidad de oficinas por hora de apertura</h3>
@@ -576,10 +560,8 @@
             <p class="oficina-card-text">oficina disponible</p>
           </div>
         </div>
-      
+    </div>
 
-
-      
   </section>
   <section id="oficina">
 
@@ -598,54 +580,11 @@
   </section> 
 
 
-  <section id="solicitud" style="background-color: var(--primary-light);">
-    <h3 class="section-title">¿Cómo solicitar el boleto estudiantil?</h3>
-    <div style="max-width: 800px; margin: 0 auto;">
-      <ol class="steps">
-        <li>
-          <h4>Completá el formulario online</h4>
-          <p>Ingresá a <a href="https://www.buenosaires.gob.ar/tramites/solicitud-del-boleto-estudiantil" target="_blank">buenosaires.gob.ar/tramites</a> y completá todos los datos requeridos para iniciar tu solicitud.</p>
-        </li>
-        <li>
-          <h4>Elegí una oficina para validar tu identidad</h4>
-          <p>Seleccioná la oficina más conveniente para presentar tu documentación. Recordá llevar DNI y constancia de alumno regular.</p>
-        </li>
-        <li>
-          <h4>Activá el beneficio en tu tarjeta SUBE</h4>
-          <p>Una vez aprobada tu solicitud, acercate a una terminal automática SUBE para activar el beneficio en tu tarjeta.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
   
   
 
 
-  <section id="contacto" class="contacto">
-    <h3 class="section-title">Contacto</h3>
-    <p>Si tenés alguna duda o consulta, podés comunicarte con nosotros a través de los siguientes canales:</p>
-    
-    <div class="contact-methods">
-      <div class="contact-method">
-        <div class="contact-icon">✉️</div>
-        <h4>Email</h4>
-        <p><a href="mailto:boletoestudiantil@buenosaires.gob.ar">boletoestudiantil@buenosaires.gob.ar</a></p>
-      </div>
-      
-      <div class="contact-method">
-        <div class="contact-icon">📞</div>
-        <h4>Teléfono</h4>
-        <p><a href="tel:147">147</a> (Lun a Vie: 8 a 20hs)</p>
-      </div>
-      
-      <div class="contact-method">
-        <div class="contact-icon">🏢</div>
-        <h4>Atención presencial</h4>
-        <p>Sedes comunales<br>Lun a Vie: 9 a 17hs</p>
-      </div>
-    </div>
-  </section>
+  
 
   <footer>
     <div class="footer-content">
